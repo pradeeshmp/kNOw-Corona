@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">kNOw Corona</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+
+    <string name="retry_">Retry</string>
+    <string name="information">Information</string>
+    <string name="number_of_cases">Cases</string>
+    <string name="number_of_deaths">Deaths</string>
+    <string name="number_of_recoveries">" Recoveries"</string>
+
+    <string name="global_situation_titile">Global Situation</string>
+
+
+    <string name="search">Search...</string>
+    <string name="toast_search_error">Wrong Entry</string>
+    <string name="situation">Situation by Country</string>
+    <string name="error_network">No Network, Retry\n</string>
+    <string name="no_result">No Results</string>
+    <string name="retry">Retry!\n</string>
+    <string name="world">World</string>
+    <string name="country">Country</string>
+    <string name="bottom_menu_map">Map</string>
+    <string name="fragment_map_textview">The Map is loading please wait...</string>
+    <string name="fragment_rss_textview">Loading latest news please wait...</string>
+    <string name="fragment_rss_detailed_textview">Loading Detailed news please wait...</string>
+    <string name="cases">Cases</string>
+    <string name="recovered">Recovered</string>
+    <string name="deceased">Deceased</string>
+
+    <string name="splash_title">kNOw Corona</string>
+    <string name="rss_headline_title">RSS headline ...</string>
+
+    <string name="brought_you_by"> - Pradeesh</string>
+
+
+</resources>

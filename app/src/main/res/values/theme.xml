@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Popup" parent="Theme.AppCompat.Light">
+
+    </style>
+
+
+    <style name="Theme.GuidelinesCompat.ColoredToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <!--  Theme: Light.ColoredToolbar -->
+
+    <style name="Theme.GuidelinesCompat.Toolbar" parent="Theme.GuidelinesCompat.ColoredToolbar">
+
+        <item name="colorControlHighlight">@color/colorAccent</item>
+        <item name="colorControlNormal">@android:color/black</item>
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:textSize">30sp</item>
+
+    </style>
+</resources>

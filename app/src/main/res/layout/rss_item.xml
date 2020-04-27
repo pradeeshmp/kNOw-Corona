@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gradient">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/rssCards"
+        android:layout_width="match_parent"
+        android:layout_height="115dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="10dp"
+        android:elevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="1dp"
+            android:background="@color/gradient_start_end">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:id="@+id/image"
+                app:layout_constraintEnd_toStartOf="@+id/title"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/rss_def_image" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                >
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="News Title"
+                    android:ellipsize="end"
+                    android:textSize="35sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorWhite"/>
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:textColor="@color/colorWhite"
+                    android:gravity="right"
+                    android:text="Published date and time"
+                    android:textSize="28sp"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
