@@ -53,11 +53,11 @@ public class RSSDetailedWebActivity extends AppCompatActivity {
                 rssFeedWebView.setVisibility(View.VISIBLE);
             }
         });
-            rssFeedWebView.loadUrl(rssURLToLoad);
+        rssFeedWebView.loadUrl(rssURLToLoad);
         backPress();
     }
 
-    private void initUI(){
+    private void initUI() {
         toolbar = findViewById(R.id.toolbar);
         rssFeedWebView = findViewById(R.id.rssDetailedwebView);
         rssDetailedprogressBar = findViewById(R.id.rssDetailedprogressBar);
@@ -66,7 +66,7 @@ public class RSSDetailedWebActivity extends AppCompatActivity {
         toolbar.setTitle(rssHeadline);
     }
 
-    private void initWebSettings(){
+    private void initWebSettings() {
         settings = rssFeedWebView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setLoadWithOverviewMode(true);

@@ -40,6 +40,7 @@ import java.util.Locale;
 import static com.pradeesh.knowcovid.utils.Constant.RSS_HEADLINEKEY;
 import static com.pradeesh.knowcovid.utils.Constant.RSS_URLKEY;
 import static com.pradeesh.knowcovid.utils.Constant.VEH_IGNITION_STATUS_ON;
+import static com.pradeesh.knowcovid.utils.Constant.VEH_SPEED_LIMIT;
 
 public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.RSSViewHolder> {
 
@@ -139,8 +140,9 @@ public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.RSSViewHolder> {
     }
 
     private void handleRSSBasedOnVehicleStatus(int position){
-        if(currentSpeed > 10 && currentIgnitionStatus.equals(VEH_IGNITION_STATUS_ON)){
+        if(currentSpeed > VEH_SPEED_LIMIT && currentIgnitionStatus.equals(VEH_IGNITION_STATUS_ON)){
             textToSpeech.speak(articles.get(position).getTitle(), TextToSpeech.QUEUE_FLUSH, null, null);
+            Toast.makeText(context, "kNOw Corona : Application in Vehicle ON mode!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -195,7 +197,7 @@ public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.RSSViewHolder> {
                     }
                     Log.v(LOG_TAG, "TTS : Initialization success.");
                 } else {
-                    Toast.makeText(context, "TTS Initialization failed!", Toast.LENGTH_SHORT).show();
+                    Log.v(LOG_TAG, "TTS : Initialization failed.");
                 }
             }
         });
