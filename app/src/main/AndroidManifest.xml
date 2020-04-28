@@ -8,6 +8,7 @@
 
     <!-- Android Car Api Permissions -->
     <uses-permission android:name="android.car.permission.CAR_SPEED" />
+    <uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
 
     <application
         android:allowBackup="false"

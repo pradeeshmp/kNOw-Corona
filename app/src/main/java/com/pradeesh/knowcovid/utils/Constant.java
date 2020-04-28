@@ -23,6 +23,10 @@ public class Constant {
     //Muticolor text
     public static final String SPLASH_APPNAME = "k<font color=#FF0000>NO</font>w Corona";
 
+    //Vehicle Parameters
+    public static final String VEH_IGNITION_STATUS_ON = "IGNITION_STATE_ON";
+    public static final String VEH_IGNITION_STATUS_OFF = "IGNITION_STATE_OFF";
+
 
 
 }

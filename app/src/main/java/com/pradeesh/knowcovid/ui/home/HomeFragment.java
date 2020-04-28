@@ -158,7 +158,6 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         }
 
         errorImage.setImageResource(imageView);
-        errorTitle.setText(title);
         errorMessage.setText(message);
 
         btnRetry.setOnClickListener(new View.OnClickListener() {

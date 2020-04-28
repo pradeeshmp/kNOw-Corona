@@ -76,8 +76,11 @@ dependencies {
 
     implementation 'com.orhanobut:dialogplus:1.11@aar'
 
-//    implementation files('libs/androidcar.jar')
-//    implementation group: 'androidx.car', name: 'car-lib', version: '1.0.0-alpha5'
+    //Event Bus
+    implementation 'org.greenrobot:eventbus:3.0.0'
 
+    //Car data
+    //implementation files('libs/androidcar.jar')
+//    implementation group: 'androidx.car', name: 'car-lib', version: '1.0.0-alpha5'
 
 }

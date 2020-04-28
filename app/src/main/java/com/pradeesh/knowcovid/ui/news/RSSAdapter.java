@@ -3,12 +3,14 @@ package com.pradeesh.knowcovid.ui.news;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,60 +23,94 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.pradeesh.knowcovid.model.Article;
 import com.pradeesh.knowcovid.R;
+import com.pradeesh.knowcovid.model.VehicleEventMessage;
 import com.pradeesh.knowcovid.ui.RSSDetailedWebActivity;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import static com.pradeesh.knowcovid.utils.Constant.RSS_HEADLINEKEY;
 import static com.pradeesh.knowcovid.utils.Constant.RSS_URLKEY;
+import static com.pradeesh.knowcovid.utils.Constant.VEH_IGNITION_STATUS_ON;
 
-public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.RSSViewHolder>{
+public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.RSSViewHolder> {
 
+    private TextToSpeech textToSpeech;
     private static final String LOG_TAG = RSSAdapter.class.getSimpleName();
     private List<Article> articles;
     private Context context;
     private PrettyTime prettyTime;
 
+    private int currentSpeed;
+    private String currentIgnitionStatus;
+
     public RSSAdapter(List<Article> articles, Context context) {
         this.articles = articles;
         this.context = context;
         prettyTime = new PrettyTime();
+        initTTS();
+        EventBus.getDefault().register(this);
     }
 
     @NonNull
     @Override
     public RSSViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.rss_item, parent,false);
+                .inflate(R.layout.rss_item, parent, false);
         return new RSSViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RSSViewHolder holder, final int position) {
         holder.title.setText(articles.get(position).getTitle());
-        holder.date.setText(prettyDateFormattter(articles.get(position).getPublishedAt()));
+        holder.date.setText(prettyDateFormatter(articles.get(position).getPublishedAt()));
 
 
         String photoUrl = articles.get(position).getUrlToImage();
 
-        if(photoUrl != null){
+        if (photoUrl != null) {
             rssImageResourceUpdate(holder.imageView, photoUrl);
         }
-        //Glide.with(context).load(photoUrl).into(holder.imageView);
     }
+
 
     @Override
     public int getItemCount() {
         return articles.size();
     }
 
+    @Override
+    public void onDetachedFromRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView);
+        EventBus.getDefault().unregister(this);
+    }
 
-    public class RSSViewHolder extends RecyclerView.ViewHolder{
+    /**
+     *So many helper funcitons in this Adapter - migrate to helper classes - v2
+     */
+
+    /**
+     * Event bus subscription
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(VehicleEventMessage event) {
+        /* Do something */
+        Log.v(LOG_TAG, event.getSpeedValue() + "");
+        Log.v(LOG_TAG, event.getIgnitionStatus());
+        currentSpeed = event.getSpeedValue();
+        currentIgnitionStatus = event.getIgnitionStatus();
+    }
+
+    public class RSSViewHolder extends RecyclerView.ViewHolder {
         TextView title, date;
         ImageView imageView;
 
@@ -88,29 +124,40 @@ public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.RSSViewHolder>{
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
-                    Intent i = new Intent(context, RSSDetailedWebActivity.class);
-                    i.putExtra(RSS_URLKEY,articles.get(position).getUrl());
-                    i.putExtra(RSS_HEADLINEKEY,articles.get(position).getTitle());
-                    context.startActivity(i);
+                    enableDetailedRSSView(position);
+                    handleRSSBasedOnVehicleStatus(position);
                 }
             });
         }
     }
 
-    private void rssImageResourceUpdate(ImageView imageView, String url){
+    private void enableDetailedRSSView(int position){
+        Intent i = new Intent(context, RSSDetailedWebActivity.class);
+        i.putExtra(RSS_URLKEY, articles.get(position).getUrl());
+        i.putExtra(RSS_HEADLINEKEY, articles.get(position).getTitle());
+        context.startActivity(i);
+    }
+
+    private void handleRSSBasedOnVehicleStatus(int position){
+        if(currentSpeed > 10 && currentIgnitionStatus.equals(VEH_IGNITION_STATUS_ON)){
+            textToSpeech.speak(articles.get(position).getTitle(), TextToSpeech.QUEUE_FLUSH, null, null);
+        }
+    }
+
+    private void rssImageResourceUpdate(ImageView imageView, String url) {
         Glide.with(context)
                 .load(url)
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        Log.e(LOG_TAG, "Resoruce Loading failed : " + url);
+                        Log.v(LOG_TAG, "Resoruce Loading failed : " + url);
                         imageView.setImageDrawable(context.getResources().getDrawable(R.mipmap.ic_launcher, null));
                         return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                        Log.e(LOG_TAG, "Resoruce ready");
+                        Log.v(LOG_TAG, "Resoruce ready");
                         return false;
                     }
                 })
@@ -118,16 +165,42 @@ public class RSSAdapter extends RecyclerView.Adapter<RSSAdapter.RSSViewHolder>{
     }
 
 
-    private String prettyDateFormattter(String dateString){
+
+
+
+    private String prettyDateFormatter(String dateString) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date convertedDate = new Date();
         try {
             convertedDate = dateFormat.parse(dateString);
-        } catch ( ParseException e) {
+        } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return prettyTime.format(convertedDate);
     }
+
+    private void initTTS() {
+        textToSpeech = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int ttsLang = textToSpeech.setLanguage(Locale.US);
+
+                    if (ttsLang == TextToSpeech.LANG_MISSING_DATA
+                            || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.v(LOG_TAG, "TTS : The Language is not supported!");
+                    } else {
+                        Log.v(LOG_TAG, "TTS : Language Supported.");
+                    }
+                    Log.v(LOG_TAG, "TTS : Initialization success.");
+                } else {
+                    Toast.makeText(context, "TTS Initialization failed!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
 
 }
