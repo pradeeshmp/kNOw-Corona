@@ -7,18 +7,18 @@ Developed based on latest Android Architecture componenets with CAN(Car API) dat
 Its an real time application fetches latest Covid19 cases data all over the world, thanks to [NovelCovid](https://github.com/NovelCOVID/API) for the API.
 
 
-## Features
+## 🧾Features 
 - Overall : Shows Total Covid-19 cases in the world from API
 - Country : User can search for a particular country to get latest Total, Recovered and Deceased cases. 
 - Map view : Shows Covid-19 cases in an map view
 - Covid News : Shows latest news specifically about Covid-19, user can see the news in detailed by clicking it.
 
-## Automotive Features
+## 🚗Automotive Features 
 - RSS TTS : If the user was in News Page and trying to access the car by ignition ON, the application will automatically starts reading(Text to speech) the news.
 
 > Criteria : Ignition ON + (Vehicle Speed > 10)
 
-## Screenshots
+## 📷Screenshots 
 
 | <img src="images/app_scrrenshot_hmi.png" width="350" height="210">   |      <img src="images/app_screenshot_splash.png" width="350" height="210">      |  <img src="images/app_screenshot_home.png" width="350" height="210"> |
 |:----------:|:-------------:|:------:|
@@ -32,3 +32,5 @@ Its an real time application fetches latest Covid19 cases data all over the worl
 |:----------:|:-------------:|:------:|
 | *Map HMI* |  *RSS-Corona News HMI* | *RSS - Detailed(Vehicle Criteria ON) HMI* |
 
+## 🎥Demo 
+![Github Banner](images/app_demo.gif)
