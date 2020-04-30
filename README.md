@@ -1,4 +1,6 @@
 # kNOw Corona
+[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://GitHub.com/Naereen/StrapDown.js/releases/)
+
 ![Github Banner](images/app_banner.png)
 
 **kNOw Corona** is an android powered application for Android Automotive infotainment devices ![](images/and_infotainment.jpg). 
