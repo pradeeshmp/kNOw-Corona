@@ -85,7 +85,7 @@ If using jar is complicated please use this [Linux SDK](https://gitlab.com/filip
 
 [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
 
-Copyright (c) 2020 Pradeesh Muthukumaraswamy
+Copyright (c) 2020 [Pradeesh Muthukumaraswamy](https://github.com/pradeeshmp)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
