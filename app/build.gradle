@@ -80,7 +80,7 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.0.0'
 
     //Car data
-    //implementation files('libs/androidcar.jar')
+    implementation files('libs/androidcar.jar')
 //    implementation group: 'androidx.car', name: 'car-lib', version: '1.0.0-alpha5'
 
 }
