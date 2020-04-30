@@ -66,7 +66,39 @@ If using jar is complicated please use this [Linux SDK](https://gitlab.com/filip
 - Retrofit - A type-safe HTTP client for Android and Java.
 - Room - A persistence library provides an abstraction layer over SQLite
 - [Car API](https://developer.android.com/reference/android/car/Car) - Bunch of apis from Android specifically used to communicate with car data.
+- [Event Bus](https://github.com/greenrobot/EventBus) - Simplifies the communication between components(Pub/Sub)
+
+## Web API 🌐
+
+- [NovelCovid](https://github.com/NovelCOVID/API) - For Corona data
+- [News API](https://newsapi.org/) - For Latest Cororna news(RSS)
+
+## Utils 🧰
+
+- [Glide](https://github.com/bumptech/glide)
+- [Pretty Time](https://github.com/ocpsoft/prettytime)
 
 
+## Licence 📝
 
+[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
 
+Copyright (c) 2020 Pradeesh Muthukumaraswamy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
