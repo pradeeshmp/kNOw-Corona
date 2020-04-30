@@ -56,3 +56,15 @@ Here I have used latest AOSP ROM to build android service jar.
 
 If using jar is complicated please use this [Linux SDK](https://gitlab.com/filipmg/android-automotive-sdk) to build.
 
+
+## Build with 🛠️
+
+- Java
+- Android Architecture Components 
+    - LiveData - Data objects that notify views when the underlying database changes.
+    - ViewModel - Stores UI-related data that isn't destroyed on UI changes.
+- Retrofit - A type-safe HTTP client for Android and Java.
+- Room - A persistence library provides an abstraction layer over SQLite
+- Car API - Bunch of apis from Android specifically used to communicate with car data.
+
+
