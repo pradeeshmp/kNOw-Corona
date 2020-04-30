@@ -65,6 +65,8 @@ If using jar is complicated please use this [Linux SDK](https://gitlab.com/filip
     - ViewModel - Stores UI-related data that isn't destroyed on UI changes.
 - Retrofit - A type-safe HTTP client for Android and Java.
 - Room - A persistence library provides an abstraction layer over SQLite
-- Car API - Bunch of apis from Android specifically used to communicate with car data.
+- [Car API](https://developer.android.com/reference/android/car/Car) - Bunch of apis from Android specifically used to communicate with car data.
+
+
 
 
