@@ -1,10 +1,10 @@
 # kNOw Corona
 ![Github Banner](images/app_banner.png)
 
-**kNOw Corona** is the first android powered application for Android Automotive infotainment devices ![](images/and_infotainment.jpg).
-Developed based on latest Android Architecture componenets with CAN(Car API) data(Emulator control - Car sensor data) utilization.
+**kNOw Corona** is an android powered application for Android Automotive infotainment devices ![](images/and_infotainment.jpg). 
+Developed using latest Android Architecture componenets + Car API data(Emulator control - Car sensor data) utilization.
 
-Its an real time application fetches latest Covid19 cases data all over the world, thanks to [NovelCovid](https://github.com/NovelCOVID/API) for the API.
+Its an real time application fetches latest information about Covid19 from the world, thanks to [NovelCovid](https://github.com/NovelCOVID/API) for the API.
 
 
 ## Features 🧾 
@@ -17,6 +17,14 @@ Its an real time application fetches latest Covid19 cases data all over the worl
 - RSS TTS : If the user was in News Page and trying to access the car by ignition ON, the application will automatically starts reading(Text to speech) the news.
 
 > Criteria : Ignition ON + (Vehicle Speed > 10)
+- Permissions
+
+`
+<!-- Android Car Api Permissions -->
+    <uses-permission android:name="android.car.permission.CAR_SPEED" />
+    <uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
+`
+
 
 ## Screenshots 📷
 
@@ -33,7 +41,18 @@ Its an real time application fetches latest Covid19 cases data all over the worl
 | *Map HMI* |  *RSS-Corona News HMI* | *RSS - Detailed(Vehicle Criteria ON) HMI* |
 
 ## Demo 🎥
-| ![Github Banner](images/app_demo_v1.gif) |
+| <img src="images/app_demo_v1.gif" width="550" height="410"> |
 |:----------:|
 
+## AA Getting Started 📖
+
+Android Automotive is the new embedded, fully functional operating system for vehicles. 
+It contains a bunch of API packages allowing us to integrate Android OS functionalities with our car.
+[Read More...](https://source.android.com/devices/automotive)
+
+To build this application, we should aware of AOSP build [(Android Open Source Project)](https://source.android.com/)
+
+Here I have used latest AOSP ROM to build android service jar.
+
+If using jar is complicated please use this [Linux SDK](https://gitlab.com/filipmg/android-automotive-sdk) to build.
 
